@@ -27,6 +27,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
+      - name: Rename APK to UUID
+          run: |
+            # 生成UUID并重命名文件
+            new_name=$(uuidgen).apk
+            mv FzuHelper_7.1.8.718524.apk "$new_name"
+            echo "NEW_FILENAME=$new_name" >> $GITHUB_ENV
+
 
       - name: Create GitHub Pre-Release
         uses: softprops/action-gh-release@v1
@@ -41,6 +48,6 @@ jobs:
             此版本为新架构测试版，请提前加入内测群 1020036141 了解详情
           prerelease: true
           files: |
-            FzuHelper_7.1.8.718524.apk
+            ${{ env.NEW_FILENAME }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
