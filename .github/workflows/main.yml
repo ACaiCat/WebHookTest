@@ -28,11 +28,10 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
 
       - name: Rename APK to UUID
-          run: |
-            # 生成UUID并重命名文件
-            new_name=$(uuidgen).apk
-            mv FzuHelper_7.1.8.718524.apk "$new_name"
-            echo "NEW_FILENAME=$new_name" >> $GITHUB_ENV
+        run: |
+          new_name=$(uuidgen).apk
+          mv FzuHelper_7.1.8.718524.apk "$new_name"
+          echo "NEW_FILENAME=$new_name" >> $GITHUB_ENV
 
 
       - name: Create GitHub Pre-Release
