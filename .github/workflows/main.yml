@@ -19,13 +19,9 @@ jobs:
 
       - name: Delete alpha release using GitHub CLI
         run: |
-          if gh release view alpha; then
-            gh release delete alpha --yes
-          else
-            echo "No alpha release exists."
-          fi
+          gh release delete alpha --yes --cleanup-tag || echo "No alpha release exists."
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ github.token }}
 
       - name: Rename APK to UUID
         run: |
