@@ -17,7 +17,7 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v4
 
-      - name: Delete alpha release using GitHub CLI
+      - name: Delete alpha by GitHub CLI
         run: |
           gh release delete alpha --yes --cleanup-tag >/dev/null 2>&1 || echo "No alpha release exists."
         env:
