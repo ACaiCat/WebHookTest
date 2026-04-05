@@ -42,6 +42,7 @@ jobs:
 
             此版本为新架构测试版，请提前加入内测群 1020036141 了解详情
           prerelease: true
+          draft: false
           files: |
             ${{ env.NEW_FILENAME }}
         env:
